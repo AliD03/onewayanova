@@ -2,16 +2,29 @@
 % Please edit documentation in R/ADehghanBanadaki_HW4_STAT523.R
 \name{oneway.formula}
 \alias{oneway.formula}
-\title{oneway.formula gets a data list and extracts two specific colmumns from the formula in order to make it ready to find the anova variables by passing it to oneway.default}
+\title{Extracting factor and data from two input columns of data}
 \usage{
 \method{oneway}{formula}(formula, data = list(), ...)
 }
 \arguments{
-\item{formula}{formula is regular formula in r which is defining two variables by ~ sign}
+\item{formula}{is regular formula in r which is defining two variables by ~ sign}
 
-\item{data}{data is a list that can have more two columns so its two col will be extracted by formula}
+\item{data}{is a list that can have more two columns so its two col will be extracted by formula}
 }
 \description{
-oneway.formula gets a data list and extracts two specific colmumns from the formula in order to make it ready to find the anova variables by passing it to oneway.default
+Extracting factor and data from two input columns of data
+}
+\examples{
+zz <- list (factor = c(rep("A",4),rep("B",6), rep("C",6), rep("D",8)) ,
+  values = c (62, 60 ,63 ,59 ,63 ,67, 71 ,64 ,65 ,66 ,68 ,66, 71 ,67 ,68 ,68, 56,62 ,60 ,61, 63, 64 ,63 ,59 ),
+  factor2= c(rep("A",4),rep("B",2)) , factor3= c(rep("F",3)) , values2 = c( 63 ,67 ,71, 64, 65, 66),
+  values2 =c(23,45,67) )
+onewayformula2 <- onewayanova:::oneway.formula(factor ~ values , zz)
+onewayanova:::print.oneway(onewayformula2)
+}
+\seealso{
+\code{\link{print.oneway}}
+
+\code{\link{print.summary.oneway}}
 }
 

@@ -22,4 +22,7 @@ oo <- onewayanova:::oneway.default(coagulation)
 pp <- onewayanova:::summary.oneway(oo)
 onewayanova:::print.summary.oneway(pp)
 }
+\seealso{
+\code{\link{print.oneway}}
+}
 

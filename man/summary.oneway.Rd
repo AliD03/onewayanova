@@ -2,7 +2,7 @@
 % Please edit documentation in R/ADehghanBanadaki_HW4_STAT523.R
 \name{summary.oneway}
 \alias{summary.oneway}
-\title{Summary.oneway gets input from the oneway.defual to for a summary out of it by making a table}
+\title{Providing summary information for the output of oneway.defual}
 \usage{
 \method{summary}{oneway}(object, ...)
 }
@@ -12,6 +12,17 @@
 \item{...}{is an addition argument}
 }
 \description{
-Summary.oneway gets input from the oneway.defual to for a summary out of it by making a table
+Providing summary information for the output of oneway.defual
+}
+\examples{
+library(faraway)
+data(coagulation)
+attach(coagulation)
+k <- onewayanova:::oneway.default(coagulation)
+kk <- onewayanova:::summary.oneway(k)
+onewayanova:::print.oneway(k)
+}
+\seealso{
+\code{\link{print.summary.oneway}}
 }
 

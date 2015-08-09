@@ -2,7 +2,7 @@
 % Please edit documentation in R/ADehghanBanadaki_HW4_STAT523.R
 \name{print.oneway}
 \alias{print.oneway}
-\title{print.oneway gets input from the oneway.defual and print the very basic information about anova}
+\title{Printing DF and SS}
 \usage{
 \method{print}{oneway}(x, ...)
 }
@@ -12,14 +12,18 @@
 \item{...}{... is the addition argument here}
 }
 \description{
-print.oneway gets input from the oneway.defual and print the very basic information about anova
+Printing DF and SS
 }
 \examples{
 library(faraway)
 data(coagulation)
-
 attach(coagulation)
 k <- onewayanova:::oneway.default(coagulation)
 onewayanova:::print.oneway(k)
+}
+\seealso{
+\code{\link{print.oneway}}
+
+\code{\link{print.summary.oneway}}
 }
 
