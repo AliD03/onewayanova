@@ -7,19 +7,23 @@
 \method{oneway}{factor}(z, y, ...)
 }
 \arguments{
-\item{z}{z as a factor input here}
+\item{z}{as a factor input here}
 
-\item{y}{y as values input here}
+\item{y}{as values input here}
 }
 \description{
 oneway.factor combines two columns of factor and values togethere and then call the oneway.default function to do the calculations for anova
 }
 \examples{
 library(faraway)
-data(coagulation)
-attach(coagulation)
 z <- coagulation$diet
 y <- coagulation$coa
-onewayanova:::oneway.factor(z,y)
+aa<- onewayanova:::oneway.factor(z,y)
+onewayanova:::print.oneway(aa)
+}
+\seealso{
+\code{\link{print.oneway}}
+
+\code{\link{print.summary.oneway}}
 }
 

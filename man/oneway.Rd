@@ -2,16 +2,23 @@
 % Please edit documentation in R/ADehghanBanadaki_HW4_STAT523.R
 \name{oneway}
 \alias{oneway}
-\title{oneway for implementing One-Way S3}
+\title{Implementing One-Way S3 update}
 \usage{
 oneway(z, ...)
 }
 \arguments{
-\item{z}{z is the input in form of list/data.frame}
+\item{z}{is the input in form of list OR data.frame}
 
-\item{...}{... is the addistion arguments here}
+\item{...}{is the addistion arguments here}
 }
 \description{
-oneway for implementing One-Way S3
+Implementing One-Way S3 update
+}
+\seealso{
+\code{\link[aov]{stat}}
+
+\code{\link{print.oneway}}
+
+\code{\link{print.summary.oneway}}
 }
 

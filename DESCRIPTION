@@ -1,0 +1,14 @@
+Package: onewayanova
+Type: Package
+Title: Calculating the oneway anova table as well as Fisher's LSD
+Version: 1.0.0
+Published: 8.8.2015
+Authors@R: person("Ali", "Dehghan Banadaki", email = "Alidehghano3@gmail.com", role = c("aut", "cre"))
+Description: This package is written in R in order to find the values of the oneway-anova table.
+    It also finds the Fisher's LSD values as well. This package has written in a way that can work
+    with both list and dataframe as an input which gives flexibility to the user. The output of anova
+    is printed very nicely which means it gives so many information in a very few lines. Moreover
+    this package is displaying the input by in boxplots which are side by side each others.
+Depends: R (>= 3.1.0)
+License: CCO
+LazyData: true

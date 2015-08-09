@@ -2,19 +2,25 @@
 % Please edit documentation in R/ADehghanBanadaki_HW4_STAT523.R
 \name{oneway.default}
 \alias{oneway.default}
-\title{oneway.defualt for calculating the anova parameters}
+\title{Calculating the anova parameters}
 \usage{
 \method{oneway}{default}(z, ...)
 }
 \arguments{
-\item{z}{z is the input in form of list/data.frame}
+\item{z}{is the input in form of list or data.frame}
 
-\item{...}{... is the addistion arguments here}
+\item{...}{is the addition arguments here}
 }
 \description{
-oneway.defualt for calculating the anova parameters
+Calculating the anova parameters
 }
 \examples{
-onewayanova:::oneway.default(coagulation)
+a <- onewayanova:::oneway.default(coagulation)
+onewayanova:::print.oneway(a)
+}
+\seealso{
+\code{\link{print.oneway}}
+
+\code{\link{print.summary.oneway}}
 }
 

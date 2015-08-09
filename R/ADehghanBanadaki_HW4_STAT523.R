@@ -1,13 +1,19 @@
-#' oneway for implementing One-Way S3 update
-#' @param z z is the input in form of list/data.frame
-#' @param ... ... is the addistion arguments here
+#' Implementing One-Way S3 update
+#' @seealso  \code{\link[aov]{stat}}
+#' @param z is the input in form of list OR data.frame
+#' @param ... is the addistion arguments here
+#' @seealso \code{\link{print.oneway}}
+#' @seealso \code{\link{print.summary.oneway}}
 #' @export
 oneway <- function(z, ...) UseMethod("oneway")
-  #' oneway.defualt for calculating the anova parameters
-  #' @param z z is the input in form of list/data.frame
-  #' @param ... ... is the addistion arguments here
+  #' Calculating the anova parameters
+  #' @param z is the input in form of list or data.frame
+  #' @param ... is the addition arguments here
+  #' @seealso \code{\link{print.oneway}}
+  #' @seealso \code{\link{print.summary.oneway}}
   #' @examples
-  #' onewayanova:::oneway.default(coagulation)
+  #' a <- onewayanova:::oneway.default(coagulation)
+  #' onewayanova:::print.oneway(a)
   #' @export
   oneway.default <- function(z, ...){
     library(faraway)
@@ -43,15 +49,16 @@ oneway <- function(z, ...) UseMethod("oneway")
 
 
 #' oneway.factor combines two columns of factor and values togethere and then call the oneway.default function to do the calculations for anova
-#' @param z z as a factor input here
-#' @param y y as values input here
+#' @param z as a factor input here
+#' @param y as values input here
+#' @seealso \code{\link{print.oneway}}
+#' @seealso \code{\link{print.summary.oneway}}
 #' @examples
 #' library(faraway)
-#' data(coagulation)
-#' attach(coagulation)
 #' z <- coagulation$diet
 #' y <- coagulation$coa
-#' onewayanova:::oneway.factor(z,y)
+#' aa<- onewayanova:::oneway.factor(z,y)
+#' onewayanova:::print.oneway(aa)
 #' @export
 oneway.factor <- function(z, y, ...) {
 ## Your code here
@@ -64,9 +71,18 @@ out
 
 
 
-#' oneway.formula gets a data list and extracts two specific colmumns from the formula in order to make it ready to find the anova variables by passing it to oneway.default
-#' @param formula formula is regular formula in r which is defining two variables by ~ sign
-#' @param data data is a list that can have more two columns so its two col will be extracted by formula
+#' Extracting factor and data from two input columns of data
+#' @param formula is regular formula in r which is defining two variables by ~ sign
+#' @param data is a list that can have more two columns so its two col will be extracted by formula
+#' @seealso \code{\link{print.oneway}}
+#' @seealso \code{\link{print.summary.oneway}}
+#' @examples
+#' zz <- list (factor = c(rep("A",4),rep("B",6), rep("C",6), rep("D",8)) ,
+#'   values = c (62, 60 ,63 ,59 ,63 ,67, 71 ,64 ,65 ,66 ,68 ,66, 71 ,67 ,68 ,68, 56,62 ,60 ,61, 63, 64 ,63 ,59 ),
+#'   factor2= c(rep("A",4),rep("B",2)) , factor3= c(rep("F",3)) , values2 = c( 63 ,67 ,71, 64, 65, 66),
+#'   values2 =c(23,45,67) )
+#' onewayformula2 <- onewayanova:::oneway.formula(factor ~ values , zz)
+#' onewayanova:::print.oneway(onewayformula2)
 #' @export
 oneway.formula <- function(formula, data=list(), ...) {
 
@@ -79,13 +95,14 @@ oneway.formula <- function(formula, data=list(), ...) {
 
 
 
-#' print.oneway gets input from the oneway.defual and print the very basic information about anova
+#' Printing DF and SS
 #' @param x x is the input from oneway.default which has the values of anova
 #' @param ... ... is the addition argument here
+#' @seealso \code{\link{print.oneway}}
+#' @seealso \code{\link{print.summary.oneway}}
 #' @examples
 #' library(faraway)
 #' data(coagulation)
-#'
 #' attach(coagulation)
 #' k <- onewayanova:::oneway.default(coagulation)
 #' onewayanova:::print.oneway(k)
@@ -99,9 +116,17 @@ print.oneway <- function(x, ...) {
 }
 
 
-#' Summary.oneway gets input from the oneway.defual to for a summary out of it by making a table
+#' Providing summary information for the output of oneway.defual
 #' @param object object is the ouput of oneway.default which has the values of anova table
 #' @param ... is an addition argument
+#' @seealso \code{\link{print.summary.oneway}}
+#' @examples
+#' library(faraway)
+#' data(coagulation)
+#' attach(coagulation)
+#' k <- onewayanova:::oneway.default(coagulation)
+#' kk <- onewayanova:::summary.oneway(k)
+#' onewayanova:::print.oneway(k)
 #' @export
 summary.oneway <- function(object, ...) {
   msb <- object$ssb / object$dfb
@@ -120,6 +145,7 @@ summary.oneway <- function(object, ...) {
 #' print.summary.oneway gets the input from the summary.oneway to print it on the screen
 #' @param x x  is the ouput of summary.oneway which has the values of anova table
 #' @param ... ... is an addition argument
+#' @seealso \code{\link{print.oneway}}
 #' @examples
 #' library(faraway)
 #' data(coagulation)
@@ -199,39 +225,6 @@ plot.oneway <- function(x, ...) {
 }
 
 
-
-#### 9. Your S3 class implementation should be illustrated with the *coagulation* data set. The data consists of blood coagulation times for 24 animals randomly assigned to four different diets.
-
-library(faraway)
-data(coagulation)
-
-# **VERY IMPORTAN COMMENT** : VERY IMPORTAN COMMENT: VERY IMPORTAN COMMENT. I do not need to change the coagualtion from data.frame to list to get it as an input to my codes since I wrote the following code in the one.way.default to do it for me automatically. So in the following code if the input is data.frame instead of list it will change the input to the list and make our job easy and our code more generic.
-#coagulation <- with(coagulation, split(coag,diet)).
-
-onewaydefault <- oneway.default(coagulation)
-print.oneway(onewaydefault)
-
-onewayfactor <- oneway.factor(coagulation$diet,coagulation$coag)
-print.oneway(onewayfactor)
-
-onewayformula <- oneway.formula(diet ~ coag , coagulation)
-print.oneway(onewayformula)
-
-# By uncommenting this line this is also possible to check the oneway fromula with the following list too that has 4 columns. Two of its lists are the same as coag and diet of coagualtion which can be shown that if I choose those two columns still I get the same answer.
-
-#z <- list (factor = c(rep("A",4),rep("B",6), rep("C",6), rep("D",8)) , values = c (62, 60 ,63 ,59 ,63 ,67, 71 ,64 ,65 ,66 ,68 ,66, 71 ,67 ,68 ,68, 56,62 ,60 ,61, 63, 64 ,63 ,59 ),     factor2= c(rep("A",4),rep("B",2)) , factor3= c(rep("F",3)) , values2 = c( 63 ,67 ,71, 64, 65, 66), values2 =c(23,45,67) )
-#onewayformula <- oneway.formula(factor ~ values , z) ; print(onewayformula)
-
-
-summaryoneway <- summary.oneway(onewaydefault)
-
-print.summary.oneway(summaryoneway)
-
-#For checkig to show that the answer is the same as the anova table I use the built-in function here
-fit <- aov(coag ~ diet, data=coagulation); summary(fit)
-
-lsmeans.oneway(onewaydefault)
-plot.oneway(onewaydefault)
 
 
 
