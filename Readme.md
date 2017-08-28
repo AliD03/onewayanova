@@ -1,4 +1,4 @@
-# Writing Package
+# Writing A Package
 
 In this tutorial I am trying to show an exampple of writing a package with R. 
 This file is part of my project for statistical computing with Prof. Harner.
